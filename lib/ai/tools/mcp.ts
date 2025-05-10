@@ -20,16 +20,16 @@ type MCPTransport =
   | Experimental_StdioMCPTransport
   | Experimental_SseMCPTransport;
 
-async function readMCPServerConfig(
+export async function readMCPServerConfig(
   mcpServerConfigPath: string,
-  defaultConfigName?: string,
+  defaultServersRoot?: string,
 ) {
   const json = JSON.parse(await fs.readFile(mcpServerConfigPath, 'utf-8'));
-  const config = defaultConfigName ? json[defaultConfigName] : json;
+  const config = defaultServersRoot ? json[defaultServersRoot] : json;
 
   if (!config) {
     throw new Error(
-      `Not found ${defaultConfigName} property in MCP server config`,
+      `Not found ${defaultServersRoot} property in MCP server config`,
     );
   }
 

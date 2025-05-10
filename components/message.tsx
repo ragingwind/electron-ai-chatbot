@@ -189,6 +189,7 @@ const PurePreviewMessage = ({
                 const { toolName, toolCallId, state } = toolInvocation;
                 const tool = tools?.[toolName];
 
+                console.log('toolInvocation', toolName, toolInvocation);
                 if (state === 'call') {
                   const { args } = toolInvocation;
 
